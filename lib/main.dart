@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wordle_flutter/wordle_grid.dart';
+import 'package:wordle_flutter/wordle_modle.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,14 +31,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: Center(
+        child: Column(
+          children: [
+            Center(
+                child: WordleGrid(
+              model: WordleModel.init("paris").withGuesses("guess"),
+            ))
+          ],
+        ),
+      ),
     );
   }
 }
